@@ -10,7 +10,7 @@ class Budget {
 }
 
 class ModelBudget extends ChangeNotifier {
-  final List<Budget> _budgets = []; // Utilizing List Data Structure
+  final List<Budget> _budgets = [];
 
   UnmodifiableListView<Budget> get budgets => UnmodifiableListView(_budgets);
 

@@ -13,9 +13,9 @@ class FormForBudget extends StatefulWidget {
 
 class _FormForBudgetState extends State<FormForBudget> {
   final _formKey = GlobalKey<FormState>();
-  String title = "";
-  String? type;
+  String judul = "";
   int nominal = 0;
+  String? jenis;
   List<String> jenisBudget = ["Pengeluaran", "Pemasukan"];
   DateTime date = DateTime.now();
 
@@ -24,7 +24,7 @@ class _FormForBudgetState extends State<FormForBudget> {
       return;
     }
 
-    final newBudget = Budget(title, nominal, type!);
+    final newBudget = Budget(judul, nominal, jenis!);
     Provider.of<ModelBudget>(context, listen: false).add(newBudget);
 
     const snackBar = SnackBar(
@@ -44,7 +44,7 @@ class _FormForBudgetState extends State<FormForBudget> {
       body: Form(
         key: _formKey,
         child: Container(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               Padding(
@@ -58,12 +58,12 @@ class _FormForBudgetState extends State<FormForBudget> {
                   ),
                   onChanged: (String? value) {
                     setState(() {
-                      title = value!;
+                      judul = value!;
                     });
                   },
                   onSaved: (String? value) {
                     setState(() {
-                      title = value!;
+                      judul = value!;
                     });
                   },
                   validator: (String? value) {
@@ -85,7 +85,6 @@ class _FormForBudgetState extends State<FormForBudget> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
-                  // Menambahkan behavior saat nama diketik
                   onChanged: (String? value) {
                     setState(() {
                       nominal = int.parse(value!);
@@ -110,30 +109,25 @@ class _FormForBudgetState extends State<FormForBudget> {
                 ),
               ),
               const SizedBox(height: 16),
-              DropdownButtonFormField(
-                value: type,
-                icon: const Icon(Icons.arrow_drop_down),
-                hint: const Text("Pilih Jenis"),
-                items: jenisBudget.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    type = newValue!;
-                  });
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "pilih salah satu jenis";
-                  }
-
-                  return null;
-                },
+              DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  value: jenis,
+                  icon: const Icon(Icons.arrow_drop_down),
+                  hint: const Text("Pilih Jenis"),
+                  items: jenisBudget.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      jenis = newValue!;
+                    });
+                  },
+                ),
               ),
-              const Spacer(), // Beri jarak dengan Button
+              const Spacer(),
               TextButton(
                 onPressed: () => submitForm(context),
                 style: ButtonStyle(

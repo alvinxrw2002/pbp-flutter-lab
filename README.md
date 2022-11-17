@@ -35,7 +35,8 @@ Navigator.pushReplacement melakukan pergantian halaman dengan cara melakukan pop
 - ListTile: Menampilkan seluruh halaman pada drawer,
 - Column: Menempatkan seluruh widget-widget children-nya dalam suatu kolom.
 - Padding: Memberikan padding kepada widget child-nya.
-- DropdownButtonFormField: Menu dropdown untuk memilih jenis budget.
+- DropdownButton: Menu dropdown untuk memilih jenis budget.
+- DropdownButtonHideUnderline: Menyembunyikan garis bawah pada menu dropdown.
 - TextButton: Tombol untuk menyimpan input form.
 - Spacer: Memberi jarak untuk tombol simpan sampai ke bawah.
 - Card: Menampilkan seluruh data budget di halaman data budget.
