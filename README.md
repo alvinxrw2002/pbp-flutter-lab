@@ -1,6 +1,6 @@
-# Nama: Alvin X.R.W.
-# NPM: 2106750300
-# Kelas: E
+### Nama: Alvin X.R.W.
+### NPM: 2106750300
+### Kelas: E
 
 # Tugas 7
 
