@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'drawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,13 +25,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Program Counter'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -41,7 +42,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final String title = 'Tugas 8';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -87,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
+        drawer: const Drwr(),
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
@@ -107,23 +109,21 @@ class _MyHomePageState extends State<MyHomePage> {
             // horizontal).
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _counter % 2 == 0 ?
-              const Text (
-                "GENAP", 
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700
-                  ),
-              ):
-              const Text (
-                "GANJIL",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700
-                  ),
-              ),
+              _counter % 2 == 0
+                  ? const Text(
+                      "GENAP",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700),
+                    )
+                  : const Text(
+                      "GANJIL",
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700),
+                    ),
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headline4,
@@ -132,24 +132,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         floatingActionButton:
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Visibility(
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Visibility(
               visible: _counter == 0 ? false : true,
-              child: 
-                FloatingActionButton(
+              child: FloatingActionButton(
                 hoverColor: Colors.red,
                 onPressed: _decrementCounter,
                 tooltip: 'Decrement',
                 child: const Icon(Icons.remove),
-                )
-            ),
-            FloatingActionButton(
-              hoverColor: Colors.green,
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ), // This trailing comma makes auto-formatting nicer for build methods.
+              )),
+          FloatingActionButton(
+            hoverColor: Colors.green,
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ), // This trailing comma makes auto-formatting nicer for build methods.
         ]));
   }
 }
