@@ -1,7 +1,7 @@
 ### Nama: Alvin X.R.W.
 ### NPM: 2106750300
 ### Kelas: E
-
+---
 # Tugas 7
 
 **1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.**<br>
@@ -24,7 +24,6 @@ Secara singkat, const berarti nilai yang disimpan dalam variabelnya harus bersif
 * Membuat widget Text untuk menampilkan counter dan status genap (merah) atau ganjil (biru). Teks yang muncul hanya bisa salah satunya berdasarkan nilai counter saat ini apakah %2 == 0 ?
 
 ---
-
 # Tugas 8
 
 **1. Jelaskan perbedaan Navigator.push dan Navigator.pushReplacement.**<br>
@@ -61,3 +60,36 @@ Secara garis besar, implementasinya terdiri dari:
 * Menambahkan model list untuk menyimpan seluruh objek-objek budget yang telah dibuat tadi dan menampilkannya dalam widget-widget.
 * Membuat halaman form untuk menyimpan input pengguna. Input pengguna ini nantinya akan dibuat menjadi objek budget dan disimpan dalam model list-nya sehingga bisa ditampilkan di halaman daftar budget.
 * Membuat drawer secara terpisah yang dapat mengarahkan ke tiga halaman tersebut, yaitu halaman utama (counter 7), form untuk menambah budget, dan daftar budget
+
+---
+# Tugas 9
+
+**1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?**<br>
+Bisa saja dengan menggunakan objek string mentah. Akan tetapi, data tersebut akan lebih sulit untuk dibaca jika dibandingkan dengan menggunakan model objek yang sesuai. Jadi, sebelum mengambil data JSON, lebih baik membuat model terlebih dahulu.
+
+**2. Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.**
+- Futurebuilder: Menampilkan data yang sudah dimabil dari JSON secara asinkronus sebelumnya (dari function fetchMyWatchList())
+- Align: Membuat allignment sesuai keinginan pada widget yang di dalamnya
+- Checkbox: Kotak centang, pada tugas ini berguna untuk menandai film yang sudah ditonton atau belum
+- RichText: Untuk membuat teks yang bisa mempunyai banyak style berbeda
+- TextSpan: Membuat teks yang nantinya akan dimasukkan ke dalam widget Richtext
+- CircularProgressIndicator: Menandakan bahwa sedang terjadi event asinkronus, terdapat indikator lingkaran yang berputar-putar seperti pada saat sedang memuat halaman.
+- ListView: Menampilkan seluruh objek mywatchlist secara berurutan dari atas ke bawah (scrollable).
+- GestureDetector: Mendeteksi adanya gestur, dalam tugas ini digunakan untuk mendeteksi adanya tap (onTap()) pada widget container di setiap movie
+
+
+**3. Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.**<br>
+- Membuat model objek yang sesuai dengan data JSON-nya yang hendak diambil
+- Ambil datanya menggunakan metode http.get
+- Mengonversikan data yang telah diambil sesuai dengan model objek yang telah dibuat sebelumnya (Menjadi objek Future)
+- Tampilkan data yang telah menjadi objek Future tersebut menggunakan widget FutureBuilder
+
+**4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.**<br>
+* Menambahkan package http dengan command `flutter pub add http`
+* Membuat model MyWatchList dengan bantuan situs [Quicktype](https://app.quicktype.io/)
+* Mengambil data JSON dari URL tugas 3 menggunakan metode http.get
+* Mengkonversikan data tersebut menjadi objek Future dengan `fetchmywatchlist()`
+* Tampilkan seluruh data dengan menggunakan widget FutureBuilder
+* Tambahkan widget GestureDetector, BoxShadow dan Checkbox di setiap data watchlist. GestureDetector berfungsi untuk mendeteksi adanya gestur sentuhan yang kemudian akan mengarahkan pada halaman detail movie, BoxShadow berguna untuk memberi warna hijau pada film yang sudah ditonton atau merah pada yang belum, sementara checkbox digunakan untuk menandakan apakah suatu movie sudah ditonton atau belum.
+* Buat halaman detail untuk menampilkan detail dari film dengan parameter film yang disentuh (onTap())
+* Menambahkan routing ke halaman My Watch List pada drawer

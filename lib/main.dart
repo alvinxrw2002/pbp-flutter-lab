@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'drawer.dart';
+import 'page/drawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +42,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title = 'Tugas 8';
+  final String title = 'Counter 7';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();

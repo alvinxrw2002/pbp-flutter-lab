@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'form.dart';
-import 'list.dart';
-import 'main.dart';
+import 'package:pbp_flutter_lab/page/form.dart';
+import 'package:pbp_flutter_lab/page/list.dart';
+import 'package:pbp_flutter_lab/main.dart';
+import 'package:pbp_flutter_lab/page/mywatchlist_page.dart';
 
 class Drwr extends StatefulWidget {
   const Drwr({super.key});
@@ -39,6 +40,14 @@ class _DrwrState extends State<Drwr> {
             onTap: () {
               Navigator.push(
                 context, MaterialPageRoute(builder: (context) => const DaftarBudget()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text("My Watch List"),
+            onTap: () {
+              Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const MyWatchListPage()),
               );
             },
           ),
